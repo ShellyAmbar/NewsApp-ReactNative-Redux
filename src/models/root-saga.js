@@ -4,7 +4,7 @@ import {handler as favoritesSaga} from './favorites/sagas';
 import {newsSaga} from './news/sagas';
 
 function* rootSagas() {
-  yield spawn(userSaga), yield spawn(favoritesSaga), yield spawn(newsSaga);
+  yield all([userSaga(), favoritesSaga(), newsSaga()]);
 }
 
 export {rootSagas};

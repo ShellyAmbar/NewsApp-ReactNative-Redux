@@ -1,11 +1,12 @@
 import React from 'react';
 import {View, Text} from 'react-native';
-function Article() {
+
+const ArticleDetails = () => {
   return (
     <View>
-      <Text>Login</Text>
+      <Text>ArticleDetails</Text>
     </View>
   );
-}
+};
 
-export default Article;
+export default ArticleDetails;

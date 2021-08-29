@@ -1,11 +1,12 @@
 import React from 'react';
 import {View, Text} from 'react-native';
-function CategoryListScreen() {
+
+const CategoryListScreen = () => {
   return (
     <View>
-      <Text>Login</Text>
+      <Text>CategoryListScreen</Text>
     </View>
   );
-}
+};
 
 export default CategoryListScreen;

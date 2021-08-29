@@ -1,11 +1,12 @@
 import React from 'react';
 import {View, Text} from 'react-native';
-function FavoritesScreen() {
+
+const FavoritesScreen = () => {
   return (
     <View>
-      <Text>Login</Text>
+      <Text>FavoritesScreen</Text>
     </View>
   );
-}
+};
 
 export default FavoritesScreen;

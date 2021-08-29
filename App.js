@@ -1,15 +1,14 @@
 import React from 'react';
+import {View, Text} from 'react-native';
+import RootNavigation from './src/navigation';
 import {store} from './src/models/store';
 import {Provider} from 'react-redux';
-import {Text, View} from 'react-native';
-import {App} from './src/index';
-
-const Root = () => {
+const App = () => {
   return (
     <Provider store={store}>
-      <App />
+      <RootNavigation />
     </Provider>
   );
 };
 
-export default Root;
+export {App};

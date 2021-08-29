@@ -21,43 +21,54 @@ const initialState = {
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case GET_NEWS_REQUEST_SUCCESS: {
-      const {news} = action.payload;
-      const {category} = action.category;
+      const news = action.payload;
+      const category = action.category;
+      console.log('category', category);
+      console.log('news', news);
+
       switch (category) {
         case GENERAL: {
-          return {...state, general_news};
+          state.general_news = news;
+          return {...state};
         }
 
         case BUSINESS: {
-          return {...state, business_news};
+          state.business_news = news;
+          return {...state};
         }
 
         case ENTERTAINMENT: {
-          return {...state, entertainment_news};
+          state.entertainment_news = news;
+          return {...state};
         }
 
         case HEALTH: {
-          return {...state, health_news};
+          state.health_news = news;
+          return {...state};
         }
 
         case SCIENCE: {
-          return {...state, science_news};
+          console.log('science');
+          state.science_news = news;
+          return {...state};
         }
 
         case SPORTS: {
-          return {...state, sports_news};
+          state.sports_news = news;
+          return {...state};
         }
 
         case TECHNOLOGY: {
-          return {...state, technology_news};
+          state.technology_news = news;
+          return {...state};
         }
         default:
-          return [];
+          return state;
       }
     }
     case GET_NEWS_REQUEST_FAILURE: {
       const {err} = action.err;
-      return err;
+      return state;
     }
     default:
       return state;

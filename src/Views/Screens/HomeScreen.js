@@ -27,16 +27,15 @@ const mapStateToProps = (state, props) => {
 };
 
 const mapDispatchToProps = (dispatch, props) => ({
-  getNews: category => {
+  getNews: () => {
     dispatch({
       type: GET_NEWS_REQUEST,
-      category: category,
       payload: {},
     });
   },
 });
 
-const HomeScreen = ({
+const Home = ({
   general_news,
   business_news,
   entertainment_news,
@@ -44,12 +43,22 @@ const HomeScreen = ({
   science_news,
   sports_news,
   technology_news,
+  getNews,
 }) => {
-  useEffect(() => {
-    getNews(GENERAL);
-  }, [getNews]);
-  return <View>{console.log('general_news', general_news)}</View>;
+  // useEffect(() => {
+  //   getNews();
+  // }, [getNews]);
+  return (
+    <View>
+      <Text>Home</Text>
+
+      {science_news && <Text>{science_news.length}</Text>}
+      {business_news && <Text>{business_news.length}</Text>}
+      {sports_news && <Text>{sports_news.length}</Text>}
+      {technology_news && <Text>{technology_news.length}</Text>}
+    </View>
+  );
 };
 
-const Home = connect(mapStateToProps, mapDispatchToProps)(HomeScreen);
-export {Home};
+const HomeScreen = connect(mapStateToProps, mapDispatchToProps)(Home);
+export default HomeScreen;
