@@ -13,7 +13,7 @@ import Tabs from '../Views/Screens/Tabs';
 const AuthStack = () => {
   return (
     <Stack.Navigator
-      initialRouteName="Tabs"
+      initialRouteName="Splash"
       screenOptions={{headerShown: false}}>
       <Stack.Screen name="Splash" component={SplashScreen} />
       <Stack.Screen name="Tabs" component={Tabs} />

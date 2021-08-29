@@ -41,7 +41,7 @@ function* getNews() {
   let i = 0;
 
   while (i < CATEGORIES.length) {
-    category = CATEGORIES[i];
+    var category = CATEGORIES[i];
     yield getNewsByCategory(category);
     i += 1;
   }
