@@ -14,11 +14,31 @@ const CategoryListScreen = props => {
     });
   }, []);
 
+  const onClickItem = article => {
+    navigation.navigate('ArticleDetails', {article});
+  };
+  const addToFavorites = () => {};
+
   return (
-    <View>
+    <View
+      style={{
+        flex: 1,
+        width: '100%',
+        height: '100%',
+        justifyContent: 'center',
+        alignItems: 'center',
+        paddingTop: 20,
+        paddingBottom: 20,
+      }}>
       {console.log(category)}
-      <Text>{category}</Text>
-      <ListViewColumn dataList={list} />
+      <Text style={{margin: 20, fontSize: 20, fontWeight: '700'}}>
+        {category}
+      </Text>
+      <ListViewColumn
+        onClickStar={addToFavorites}
+        onClickItem={onClickItem}
+        dataList={list}
+      />
     </View>
   );
 };

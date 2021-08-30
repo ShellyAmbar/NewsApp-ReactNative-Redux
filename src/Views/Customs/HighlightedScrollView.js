@@ -1,17 +1,33 @@
 import React from 'react';
-import {View, Text, ScrollView, ActivityIndicator, Image} from 'react-native';
+import {
+  View,
+  Text,
+  ScrollView,
+  ActivityIndicator,
+  Image,
+  TouchableOpacity,
+} from 'react-native';
 import {HighlightedObject} from './HighlightedObject';
 
 const HighlightedScrollView = props => {
   const scrollView = () => {
     return (
-      <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
-        {props.dataList.map((data, index) => (
-          <View key={index}>
-            {data.image ? <HighlightedObject obj={data} /> : null}
-          </View>
-        ))}
-      </ScrollView>
+      <View>
+        <Text style={{margin: 20, fontSize: 20, fontWeight: '700'}}>
+          {props.title}
+        </Text>
+        <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
+          {props.dataList.map((data, index) => (
+            <TouchableOpacity
+              key={index}
+              onPress={() => props.onClickItem(data)}>
+              {data.image ? (
+                <HighlightedObject onClickStar={props.onClickStar} obj={data} />
+              ) : null}
+            </TouchableOpacity>
+          ))}
+        </ScrollView>
+      </View>
     );
   };
 

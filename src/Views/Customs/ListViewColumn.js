@@ -1,5 +1,11 @@
 import React from 'react';
-import {View, Text, ActivityIndicator, ScrollView} from 'react-native';
+import {
+  View,
+  Text,
+  ActivityIndicator,
+  ScrollView,
+  TouchableOpacity,
+} from 'react-native';
 import ListViewItem from './ListViewItem';
 
 const ListViewColumn = props => {
@@ -7,9 +13,15 @@ const ListViewColumn = props => {
 
   const ListView = () => {
     return (
-      <ScrollView horizontal="false">
+      <ScrollView style={{padding: 10, marginBottom: 20}} horizontal="false">
         {dataList.map((data, index) => {
-          return <ListViewItem key={index} obj={data} />;
+          return (
+            <TouchableOpacity
+              key={index}
+              onPress={() => props.onClickItem(data)}>
+              <ListViewItem onClickStar={props.onClickStar} obj={data} />
+            </TouchableOpacity>
+          );
         })}
       </ScrollView>
     );

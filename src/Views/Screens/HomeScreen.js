@@ -1,6 +1,6 @@
 import {useNavigation} from '@react-navigation/native';
 import React, {useEffect} from 'react';
-import {View, Text} from 'react-native';
+import {View, Text, ScrollView} from 'react-native';
 import {connect} from 'react-redux';
 import {GET_NEWS_REQUEST} from '../../models/news/actions';
 import {
@@ -15,6 +15,7 @@ import {
 } from '../../models/news/categories';
 import {GET_USER_INFO_REQUEST} from '../../models/user/actions';
 import HighlightedScrollView from '../Customs/HighlightedScrollView';
+import ListViewColumn from '../Customs/ListViewColumn';
 import OptionsScrollView from '../Customs/OptionsScrollView';
 
 const mapStateToProps = (state, props) => {
@@ -89,13 +90,73 @@ const Home = ({
     const list = getListOfCategory(category);
     navigation.navigate('CategoryList', {category, list});
   };
+
+  const onClickItem = article => {
+    navigation.navigate('ArticleDetails', {article});
+  };
+  const addToFavorites = () => {};
+
+  const getListOfOpeningNews = () => {
+    let list = [];
+    list.push(
+      <HighlightedScrollView
+        onClickStar={addToFavorites}
+        onClickItem={onClickItem}
+        title={GENERAL}
+        dataList={general_news}
+      />,
+    );
+    list.push(
+      <HighlightedScrollView
+        onClickStar={addToFavorites}
+        onClickItem={onClickItem}
+        title={SPORTS}
+        dataList={sports_news}
+      />,
+    );
+    list.push(
+      <HighlightedScrollView
+        onClickStar={addToFavorites}
+        onClickItem={onClickItem}
+        title={SCIENCE}
+        dataList={science_news}
+      />,
+    );
+    list.push(
+      <HighlightedScrollView
+        onClickStar={addToFavorites}
+        onClickItem={onClickItem}
+        title={ENTERTAINMENT}
+        dataList={entertainment_news}
+      />,
+    );
+    list.push(
+      <HighlightedScrollView
+        onClickStar={addToFavorites}
+        onClickItem={onClickItem}
+        title={TECHNOLOGY}
+        dataList={technology_news}
+      />,
+    );
+    list.push(
+      <HighlightedScrollView
+        onClickStar={addToFavorites}
+        onClickItem={onClickItem}
+        title={BUSINESS}
+        dataList={business_news}
+      />,
+    );
+    return list;
+  };
   return (
-    <View>
+    <View style={{paddingBottom: 50}}>
       <OptionsScrollView
         dataList={CATEGORIES}
         onClickOption={onClickCategory}
       />
-      <HighlightedScrollView dataList={general_news} />
+      <ScrollView horizontal="false" style={{marginBottom: 20}}>
+        {getListOfOpeningNews().map((data, index) => data)}
+      </ScrollView>
     </View>
   );
 };
