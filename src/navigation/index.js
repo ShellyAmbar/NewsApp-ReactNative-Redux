@@ -1,14 +1,13 @@
-import {NavigationContainer} from '@react-navigation/native';
 import React from 'react';
-import {View, Text} from 'react-native';
-import AuthStack from './AuthStack';
+import {AuthProvider} from './AuthProvider.android';
+import Routes from './Routes';
 
-const RootNavigation = () => {
+const Providers = () => {
   return (
-    <NavigationContainer>
-      <AuthStack />
-    </NavigationContainer>
+    <AuthProvider>
+      <Routes />
+    </AuthProvider>
   );
 };
 
-export default RootNavigation;
+export default Providers;

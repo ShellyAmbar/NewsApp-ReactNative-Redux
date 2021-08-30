@@ -17,15 +17,19 @@ const HighlightedScrollView = props => {
           {props.title}
         </Text>
         <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
-          {props.dataList.map((data, index) => (
-            <TouchableOpacity
-              key={index}
-              onPress={() => props.onClickItem(data)}>
-              {data.image ? (
-                <HighlightedObject onClickStar={props.onClickStar} obj={data} />
-              ) : null}
-            </TouchableOpacity>
-          ))}
+          {props.dataList != null &&
+            props.dataList.map((data, index) => (
+              <TouchableOpacity
+                key={index}
+                onPress={() => props.onClickItem(data)}>
+                {data.image ? (
+                  <HighlightedObject
+                    onClickStar={props.onClickStar}
+                    obj={data}
+                  />
+                ) : null}
+              </TouchableOpacity>
+            ))}
         </ScrollView>
       </View>
     );
@@ -33,10 +37,10 @@ const HighlightedScrollView = props => {
 
   return (
     <View>
-      {props.dataList.length === 0 ? (
-        <ActivityIndicator color="black" size="large" />
-      ) : (
+      {props.dataList && props.dataList.length > 0 ? (
         scrollView()
+      ) : (
+        <ActivityIndicator color="black" size="large" />
       )}
     </View>
   );

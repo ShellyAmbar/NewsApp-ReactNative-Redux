@@ -155,7 +155,9 @@ const Home = ({
         onClickOption={onClickCategory}
       />
       <ScrollView horizontal="false" style={{marginBottom: 20}}>
-        {getListOfOpeningNews().map((data, index) => data)}
+        {getListOfOpeningNews().map((data, index) => (
+          <View key={index}>{data}</View>
+        ))}
       </ScrollView>
     </View>
   );

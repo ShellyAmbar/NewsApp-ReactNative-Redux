@@ -1,5 +1,12 @@
 import {takeEvery} from 'redux-saga/effects';
-import {favoritesActionError, favoritesActionSuccess} from './actionFunctions';
+import {
+  getFavoritesActionError,
+  getFavoritesActionSuccess,
+  removeFromFavoritesActionError,
+  removeFromFavoritesActionSuccess,
+  setToFavoritesActionError,
+  setToFavoritesActionSuccess,
+} from './actionFunctions';
 import {GET_FAVORITE_NEWS_REQUEST} from './actions';
 
 function* handler() {
@@ -9,19 +16,25 @@ function* handler() {
 function* getFavoritesNews(action) {
   try {
     const favorites = [];
-    favoritesActionSuccess(favorites);
+    getFavoritesActionSuccess(favorites);
   } catch (error) {
-    favoritesActionError(error);
+    getFavoritesActionError(error);
   }
 }
-function* addToFavoritesNews(action) {
+function* addToFavoritesNews(favirte) {
   try {
-  } catch (err) {}
+    setToFavoritesActionSuccess(favirte);
+  } catch (error) {
+    setToFavoritesActionError(error);
+  }
 }
 
-function* removeFromFavoritesNews(action) {
+function* removeFromFavoritesNews(favirte) {
   try {
-  } catch (err) {}
+    removeFromFavoritesActionSuccess(favirte);
+  } catch (error) {
+    removeFromFavoritesActionError(error);
+  }
 }
 
 export {handler};
