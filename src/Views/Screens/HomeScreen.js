@@ -2,6 +2,7 @@ import {useNavigation} from '@react-navigation/native';
 import React, {useEffect} from 'react';
 import {View, Text, ScrollView} from 'react-native';
 import {connect} from 'react-redux';
+import {ADD_TO_FAVORITE_NEWS_REQUEST} from '../../models/favorites/actions';
 import {GET_NEWS_REQUEST} from '../../models/news/actions';
 import {
   BUSINESS,
@@ -46,6 +47,12 @@ const mapDispatchToProps = (dispatch, props) => ({
       payload: {},
     });
   },
+  addToFavoritesNews: favorite => {
+    dispatch({
+      type: ADD_TO_FAVORITE_NEWS_REQUEST,
+      payload: favorite,
+    });
+  },
 });
 
 const Home = ({
@@ -57,6 +64,7 @@ const Home = ({
   sports_news,
   technology_news,
   getNews,
+  addToFavoritesNews,
 }) => {
   useEffect(() => {
     getNews();
@@ -94,7 +102,9 @@ const Home = ({
   const onClickItem = article => {
     navigation.navigate('ArticleDetails', {article});
   };
-  const addToFavorites = () => {};
+  const addToFavorites = favorite => {
+    addToFavoritesNews(favorite);
+  };
 
   const getListOfOpeningNews = () => {
     let list = [];

@@ -8,6 +8,6 @@ import {newsSaga} from './news/sagas';
 const sagaMiddleware = createSagaMiddleware();
 
 const store = createStore(reducer, applyMiddleware(sagaMiddleware));
-sagaMiddleware.run(newsSaga);
+sagaMiddleware.run(rootSagas);
 
 export {store};

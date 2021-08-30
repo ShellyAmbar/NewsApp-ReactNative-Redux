@@ -1,32 +1,20 @@
 import {put, takeEvery} from 'redux-saga/effects';
-import {
-  GET_USER_INFO_REQUEST,
-  GET_USER_INFO_REQUEST_FAILURE,
-  GET_USER_INFO_REQUEST_SUCCESS,
-} from './actions';
+import {signinActionError, signinActionSuccess} from './actionFunctions';
+import {SIGNIN_USER_REQUEST} from './actions';
 
 function* handler() {
-  yield takeEvery(GET_USER_INFO_REQUEST, getAllUserInfo);
+  yield takeEvery(SIGNIN_USER_REQUEST, getAllUserInfo);
 }
 
 function* getAllUserInfo(action) {
   console.log(action);
+
   try {
     //if success
-    yield put({
-      type: GET_USER_INFO_REQUEST_SUCCESS,
-      payload: {
-        id: 'idShelly',
-        name: 'shelly',
-        email: 'shelly@gmail.com',
-        token: '45645656rtgr6t546',
-      },
-    });
+    const user = {};
+    yield put(signinActionSuccess(user));
   } catch (error) {
-    yield put({
-      type: GET_USER_INFO_REQUEST_FAILURE,
-      err: error,
-    });
+    yield put(signinActionError(error));
   }
 }
 

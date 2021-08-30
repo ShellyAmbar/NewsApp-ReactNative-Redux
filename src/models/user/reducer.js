@@ -1,6 +1,6 @@
 import {
-  GET_USER_INFO_REQUEST_SUCCESS,
-  GET_USER_INFO_REQUEST_FAILURE,
+  SIGNIN_USER_REQUEST_SUCCESS,
+  SIGNIN_USER_REQUEST_FAILURE,
 } from './actions';
 const initialState = {
   id: 'id1',
@@ -11,11 +11,11 @@ const initialState = {
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
-    case GET_USER_INFO_REQUEST_SUCCESS: {
+    case SIGNIN_USER_REQUEST_SUCCESS: {
       const {id, token, name, email} = action.payload;
       return {id, token, name, email};
     }
-    case GET_USER_INFO_REQUEST_FAILURE: {
+    case SIGNIN_USER_REQUEST_FAILURE: {
       const {err} = action.err;
       return err;
     }

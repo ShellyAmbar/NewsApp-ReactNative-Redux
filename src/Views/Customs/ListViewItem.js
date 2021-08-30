@@ -29,7 +29,7 @@ const ListViewItem = props => {
           paddingStart: 5,
           backgroundColor: 'rgba(255, 0, 0, 0.4)',
         }}>
-        <TouchableOpacity onPress={props.onClickStar()}>
+        <TouchableOpacity onPress={() => props.onClickStar(obj)}>
           <Icon name="star-outline" size={30} color={'#FFFF'} />
         </TouchableOpacity>
       </View>

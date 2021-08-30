@@ -8,5 +8,7 @@ export const getNewsByCategoryCall = category => {
     `${url}${config.API_KEY}&categories=${category}&languages=en`,
   );
 
-  return fetch(`${url}${config.API_KEY}&categories=${category}&languages=en`);
+  return fetch(
+    `${url}${'60e75124ba99c027323f13266392d25c'}&categories=${category}&languages=en`,
+  );
 };

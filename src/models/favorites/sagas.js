@@ -1,4 +1,4 @@
-import {takeEvery} from 'redux-saga/effects';
+import {put, takeEvery} from 'redux-saga/effects';
 import {
   getFavoritesActionError,
   getFavoritesActionSuccess,
@@ -7,34 +7,47 @@ import {
   setToFavoritesActionError,
   setToFavoritesActionSuccess,
 } from './actionFunctions';
-import {GET_FAVORITE_NEWS_REQUEST} from './actions';
+import {
+  ADD_TO_FAVORITE_NEWS_REQUEST,
+  GET_FAVORITE_NEWS_REQUEST,
+  REMOVE_FROM_FAVORITE_NEWS_REQUEST,
+} from './actions';
 
-function* handler() {
+function* handlerGetFavorites() {
   yield takeEvery(GET_FAVORITE_NEWS_REQUEST, getFavoritesNews);
 }
 
-function* getFavoritesNews(action) {
+function* handlerAddToFavorites() {
+  yield takeEvery(ADD_TO_FAVORITE_NEWS_REQUEST, addToFavoritesNews);
+}
+function* handlerRemoveFromFavorites() {
+  yield takeEvery(REMOVE_FROM_FAVORITE_NEWS_REQUEST, removeFromFavoritesNews);
+}
+
+function* getFavoritesNews() {
   try {
+    //TODO get favorites from firestore database
     const favorites = [];
-    getFavoritesActionSuccess(favorites);
+
+    yield put(getFavoritesActionSuccess(favorites));
   } catch (error) {
-    getFavoritesActionError(error);
+    yield put(getFavoritesActionError(error));
   }
 }
 function* addToFavoritesNews(favirte) {
   try {
-    setToFavoritesActionSuccess(favirte);
+    yield put(setToFavoritesActionSuccess(favirte));
   } catch (error) {
-    setToFavoritesActionError(error);
+    yield put(setToFavoritesActionError(error));
   }
 }
 
 function* removeFromFavoritesNews(favirte) {
   try {
-    removeFromFavoritesActionSuccess(favirte);
+    yield put(removeFromFavoritesActionSuccess(favirte));
   } catch (error) {
-    removeFromFavoritesActionError(error);
+    yield put(removeFromFavoritesActionError(error));
   }
 }
 
-export {handler};
+export {handlerGetFavorites, handlerAddToFavorites, handlerRemoveFromFavorites};

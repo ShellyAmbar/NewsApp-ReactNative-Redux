@@ -14,24 +14,25 @@ const ListViewColumn = props => {
   const ListView = () => {
     return (
       <ScrollView style={{padding: 10, marginBottom: 20}} horizontal="false">
-        {dataList.map((data, index) => {
-          return (
-            <TouchableOpacity
-              key={index}
-              onPress={() => props.onClickItem(data)}>
-              <ListViewItem onClickStar={props.onClickStar} obj={data} />
-            </TouchableOpacity>
-          );
-        })}
+        {dataList &&
+          dataList.map((data, index) => {
+            return (
+              <TouchableOpacity
+                key={index}
+                onPress={() => props.onClickItem(data)}>
+                <ListViewItem onClickStar={props.onClickStar} obj={data} />
+              </TouchableOpacity>
+            );
+          })}
       </ScrollView>
     );
   };
   return (
     <View>
-      {dataList.length === 0 ? (
-        <ActivityIndicator color="black" size="large" />
-      ) : (
+      {dataList && dataList.length > 0 ? (
         ListView()
+      ) : (
+        <ActivityIndicator color="black" size="large" />
       )}
     </View>
   );

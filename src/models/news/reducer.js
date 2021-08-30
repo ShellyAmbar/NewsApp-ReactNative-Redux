@@ -23,8 +23,8 @@ const reducer = (state = initialState, action) => {
     case GET_NEWS_REQUEST_SUCCESS: {
       const news = action.payload;
       const category = action.category;
-      console.log('category', category);
-      console.log('news', news);
+      // console.log('category', category);
+      // console.log('news', news);
 
       switch (category) {
         case GENERAL: {

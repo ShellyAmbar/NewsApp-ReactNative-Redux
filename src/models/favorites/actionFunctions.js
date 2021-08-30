@@ -7,10 +7,11 @@ import {
   REMOVE_FROM_FAVORITE_NEWS_REQUEST_SUCCESS,
 } from './actions';
 //GET
-const getFavoritesActionSuccess = payload => {
+const getFavoritesActionSuccess = news => {
+  console.log('favoritesAction', news);
   return {
     type: GET_FAVORITE_NEWS_REQUEST_SUCCESS,
-    payload: payload,
+    payload: news,
   };
 };
 const getFavoritesActionError = error => {
@@ -22,10 +23,10 @@ const getFavoritesActionError = error => {
 };
 //SET
 
-const setToFavoritesActionSuccess = payload => {
+const setToFavoritesActionSuccess = obj => {
   return {
     type: ADD_TO_FAVORITE_NEWS_REQUEST_SUCCESS,
-    payload: payload,
+    payload: obj,
   };
 };
 const setToFavoritesActionError = error => {
