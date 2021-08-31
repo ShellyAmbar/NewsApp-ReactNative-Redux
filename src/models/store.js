@@ -20,10 +20,3 @@ let store = createStore(persistedReducer, applyMiddleware(sagaMiddleware));
 sagaMiddleware.run(rootSagas);
 let persistor = persistStore(store);
 export {store, persistor};
-//saga
-// const sagaMiddleware = createSagaMiddleware();
-
-// const store = createStore(reducer, applyMiddleware(sagaMiddleware));
-// sagaMiddleware.run(rootSagas);
-
-// export {store};
